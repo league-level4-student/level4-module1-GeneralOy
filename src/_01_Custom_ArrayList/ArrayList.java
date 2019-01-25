@@ -4,10 +4,11 @@ package _01_Custom_ArrayList;
 
 public class ArrayList<T> {
 	T[] List;
+	
 	int r = 0;
 
 	public ArrayList() {
-
+		List = new <T>[50];
 	}
 
 	public T get(int loc) throws IndexOutOfBoundsException {
@@ -16,10 +17,6 @@ public class ArrayList<T> {
 
 	public void add(T val) {
 		List[List.length] = val;
-		// if(r != List.length) {
-		// r = List.length;
-		// }
-
 	}
 
 	public void insert(int loc, T val) throws IndexOutOfBoundsException {
@@ -40,14 +37,10 @@ public class ArrayList<T> {
 //*********
 	public void remove(int loc) throws IndexOutOfBoundsException {
 		for (int i = loc; i < List.length; i++) {
-			/*if (i < List.length && List.length > 1) {
-				List[i] = List[i + 1];
-			}*/
-			int remNum = List.length - (loc + 1);
-			System.arraycopy(List, loc + 1, List, loc, remNum);
-			/*else if(List.length == 1) {
-				List[i] 
-			}*/
+			if (i < loc) {
+				int remNum = List.length - (loc + 1);
+				System.arraycopy(List, loc + 1, List, loc, remNum);
+			}
 		}
 	}
 
