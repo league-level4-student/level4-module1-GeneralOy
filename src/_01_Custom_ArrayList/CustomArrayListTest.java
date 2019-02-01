@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public class CustomArrayListTest {
 
-	@Test
+	/**/@Test
 	public void testAddAndGet() {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		list.add(0);
@@ -17,9 +17,9 @@ public class CustomArrayListTest {
 		if(list.get(0) != 0) fail("list.get(0) returning improper value.");
 		if(list.get(1) != 1) fail("list.get(1) returning improper value.");
 		if(list.get(2) != 206) fail("list.get(2) returning improper value.");
-	}
+	}/**/
 	
-	@Test
+	/**/@Test
 	public void testSet() {
 		ArrayList<String> list = new ArrayList<String>();
 		list.add("TESTER");
@@ -33,9 +33,9 @@ public class CustomArrayListTest {
 		if(!list.get(1).equals("ONE"))  fail("list.get(1) returning improper value.");
 		if(!list.get(2).equals("PICKLES"))  fail("list.get(2) returning improper value.");
 		if(!list.get(3).equals("THREE"))  fail("list.get(3) returning improper value.");
-	}
+	}/**/
 	
-	@Test
+	/**/@Test
 	public void testAddAt() {
 		ArrayList<Character> list = new ArrayList<Character>();
 		list.add('D');
@@ -50,9 +50,9 @@ public class CustomArrayListTest {
 		if(list.get(2) != 'E') fail("list.get(2) returning improper value.");
 		if(list.get(3) != 'G') fail("list.get(3) returning improper value.");
 		if(list.get(4) != 'O') fail("list.get(4) returning improper value.");
-	}
+	}/**/
 	
-	@Test
+	/**/@Test
 	public void testRemove() {
 		class Student { 
 			public String name; 
@@ -85,9 +85,9 @@ public class CustomArrayListTest {
 		if(!list.get(1).name.equals("Kamara")) {
 			fail("list.get(1) returning improper value.");
 		}
-	}
+	}/**/
 	
-	@Test
+	/**/@Test
 	public void testContains() {
 		ArrayList<String> list = new ArrayList<String>();
 		list.add("This");
@@ -101,9 +101,9 @@ public class CustomArrayListTest {
 		assertTrue(list.contains("only"));
 		assertFalse(list.contains("the"));
 		assertFalse(list.contains("best"));
-	}
+	}/**/
 	
-	@Test
+	/**/@Test
 	public void testSize() {
 		ArrayList<String> list = new ArrayList<String>();
 		list.add("This");
@@ -120,9 +120,9 @@ public class CustomArrayListTest {
 		list2.add(206);
 		
 		assertTrue(list2.size() == 3);
-	}
+	}/**/
 	
-	@Test
+	/**/@Test
 	public void testSizeOnRemove() {
 		ArrayList<String> list = new ArrayList<String>();
 		list.add("This");
@@ -137,5 +137,5 @@ public class CustomArrayListTest {
 		list.remove(0);
 		
 		assertTrue(list.size() == 3);
-	}
+	}/**/
 }
