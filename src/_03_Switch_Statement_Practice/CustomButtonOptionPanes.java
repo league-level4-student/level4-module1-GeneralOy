@@ -27,10 +27,10 @@ public class CustomButtonOptionPanes {
 			System.out.println("Thursdays are okay :|");
 			break;
 		case "Friday":
-			System.out.println("Fridays are great :)");
+			System.out.println("Fridays are good :)");
 			break;
 		case "Saturday":
-			System.out.println("Saturdays are amazing :D");
+			System.out.println("Saturdays are great :D");
 			break;
 		}
 		
