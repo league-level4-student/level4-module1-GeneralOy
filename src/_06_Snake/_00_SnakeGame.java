@@ -199,6 +199,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 			resetGame();
 		}else if(n == JOptionPane.NO_OPTION) {
 			/*exit game*/
+			
 		}
 		/*4. if they want to play again
 		//   reset the snake and the food and start the timer
