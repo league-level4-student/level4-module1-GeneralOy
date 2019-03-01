@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 public class Snake {
-	public static final Color SNAKE_COLOR = Color.BLUE;
+	public static final Color SNAKE_COLOR = Color.GREEN;
 	public static final int BODY_SIZE = 50;
 
 	private SnakeSegment head;
@@ -42,19 +42,19 @@ public class Snake {
 		 */
 		switch (currentDirection) {
 		case RIGHT: {
-			newHeadLocation = new Location(head.getLocation().x + BODY_SIZE, head.getLocation().y);
+			newHeadLocation = new Location(head.getLocation().x + 1, head.getLocation().y);
 			break;
 		}
 		case LEFT: {
-			newHeadLocation = new Location(head.getLocation().x - BODY_SIZE, head.getLocation().y);
+			newHeadLocation = new Location(head.getLocation().x - 1, head.getLocation().y);
 			break;
 		}
 		case DOWN: {
-			newHeadLocation = new Location(head.getLocation().x, head.getLocation().y + BODY_SIZE);
+			newHeadLocation = new Location(head.getLocation().x, head.getLocation().y + 1);
 			break;
 		}
 		case UP: {
-			newHeadLocation = new Location(head.getLocation().x, head.getLocation().y - BODY_SIZE);
+			newHeadLocation = new Location(head.getLocation().x, head.getLocation().y - 1);
 			break;
 		}
 		}
@@ -68,8 +68,7 @@ public class Snake {
 		}
 
 		/** 3. set the location of the head to the new location calculated in step 1 */
-		snake.get(0).setLocation(newHeadLocation);
-		/** 4. set canMove to true */
+		snake.get(0).setLocation(newHeadLocation);/** 4. set canMove to true */
 		canMove = true;
 	}
 
@@ -79,12 +78,11 @@ public class Snake {
 			currentDirection = d;
 		} else if (canMove) {
 			canMove = false;
-		}
-		/**
-		 * 1. set the current direction equal to the passed in Direction only if canMove
-		 * is true. // set canMove equal to false. // make sure the snake cannot
-		 * completely reverse directions.
-		 */
+		} /**
+			 * 1. set the current direction equal to the passed in Direction only if canMove
+			 * is true. // set canMove equal to false. // make sure the snake cannot
+			 * completely reverse directions.
+			 */
 
 	}
 
@@ -104,7 +102,7 @@ public class Snake {
 		 * of the window // and false otherwise
 		 */
 		if ((head.getLocation().x > _00_SnakeGame.WINDOW_WIDTH || head.getLocation().x < 0)
-				&& (head.getLocation().y >= _00_SnakeGame.WINDOW_HEIGHT || head.getLocation().y < 0)) {
+				|| (head.getLocation().y > _00_SnakeGame.WINDOW_HEIGHT || head.getLocation().y < 0)) {
 			return true;
 		} else {
 			return false;
@@ -112,20 +110,35 @@ public class Snake {
 	}
 
 	public boolean isHeadCollidingWithBody() {
-		/*
+		/**
 		 * 1. complete the method so it returns true if the head is located // in the
 		 * same location as any other body segment
 		 */
-
+		System.out.println("test");
+		for (SnakeSegment snek : snake) {
+			System.out.println("inside snek");
+			if (head.getLocation() == snek.getLocation() && head != snek) {
+				System.out.println("HIT");
+				return true;
+			}
+			if (head == snek) {
+				System.out.println("EQUAL");
+			}
+		}
 		return false;
+
 	}
 
 	public boolean isLocationOnSnake(Location loc) {
-		/*
+		/**
 		 * 1. complete the method so it returns true if the passed in // location is
 		 * located on the snake
 		 */
-
+		for (SnakeSegment snek : snake) {
+			if (loc == snek.getLocation()) {
+				return true;
+			}
+		}
 		return false;
 	}
 

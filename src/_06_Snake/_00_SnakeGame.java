@@ -78,7 +78,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		snake.reset(new Location(WIDTH / 2, HEIGHT / 2));
 		setFoodLocation();
 		startGame();
-		// panel.repaint();
+		panel.repaint();
 	}
 
 	public void startGame() {
@@ -97,15 +97,15 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		 */
 		switch (choice) {
 		case "Expert": {
-			timer.setDelay(750);
+			timer.setDelay(500);
 			break;
 		}
 		case "Moderate": {
-			timer.setDelay(1500);
+			timer.setDelay(750);
 			break;
 		}
 		case "Beginner": {
-			timer.setDelay(3000);
+			timer.setDelay(1000);
 			break;
 		}
 		}
@@ -171,7 +171,9 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 			break;
 		}
 		case 32: {
-			snake.feed();
+			if (snake.getHeadLocation() == foodLocation) {
+				snake.feed();
+			}
 			break;
 		}
 		}
@@ -180,11 +182,13 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		 */
 
 		/** if the space key is pressed, call the snake's feed method */
+		panel.repaint();
 
 	}
 
 	private void setFoodLocation() {
 		/** 1. Create a new Location object that is set to a random location */
+
 		boolean onSnake = true;
 		while (onSnake) {
 			Location randLoc = new Location(randomInt.nextInt(WIDTH), randomInt.nextInt(HEIGHT));
@@ -217,7 +221,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 			resetGame();
 		} else if (n == JOptionPane.NO_OPTION) {
 			/* exit game */
-
+			/* window.dispose(); */
 		}
 		/*
 		 * 4. if they want to play again // reset the snake and the food and start the
