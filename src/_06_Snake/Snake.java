@@ -135,9 +135,14 @@ public class Snake {
 		 * located on the snake
 		 */
 		for (SnakeSegment snek : snake) {
-			if (loc == snek.getLocation()) {
-				return true;
+			for (int a = 0; a < 3; a++) {
+				for (int b = 0; b < 3; b++) {
+					if (loc.x == snek.getLocation().x + a && loc.y == snek.getLocation().y + b) {
+						return true;
+					}
+				}
 			}
+
 		}
 		return false;
 	}
