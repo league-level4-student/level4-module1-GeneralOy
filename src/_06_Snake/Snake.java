@@ -101,8 +101,8 @@ public class Snake {
 		 * 1. complete the method so it returns true if the head of the snake is outside
 		 * of the window // and false otherwise
 		 */
-		if ((head.getLocation().x > _00_SnakeGame.WINDOW_WIDTH || head.getLocation().x < 0)
-				|| (head.getLocation().y > _00_SnakeGame.WINDOW_HEIGHT || head.getLocation().y < 0)) {
+		if ((head.getLocation().x * _00_SnakeGame.WINDOW_SCALE >= _00_SnakeGame.WINDOW_WIDTH || head.getLocation().x * _00_SnakeGame.WINDOW_SCALE < 0)
+				|| (head.getLocation().y * _00_SnakeGame.WINDOW_SCALE >= _00_SnakeGame.WINDOW_HEIGHT || head.getLocation().y * _00_SnakeGame.WINDOW_SCALE < 0)) {
 			return true;
 		} else {
 			return false;

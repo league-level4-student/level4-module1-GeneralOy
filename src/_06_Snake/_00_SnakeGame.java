@@ -210,7 +210,6 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	private void gameOver() {
 		timer.stop();
 		/** 1. stop the timer */
-		// JOptionPane.showMessageDialog(null, "Game over! Your snake died!");
 		/** 2. tell the user their snake is dead */
 
 		/** 3. ask them if they want to play again. */
@@ -220,12 +219,11 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 			/* reset game */
 			resetGame();
 		} else if (n == JOptionPane.NO_OPTION) {
-			/* exit game */
-			/* window.dispose(); */
+			System.exit(0);
 		}
 		/*
 		 * 4. if they want to play again // reset the snake and the food and start the
-		 * timer // else, exit the game
+		 * timer *//** else, exit the game
 		 */
 
 	}
