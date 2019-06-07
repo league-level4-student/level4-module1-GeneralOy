@@ -5,10 +5,12 @@ import java.awt.Graphics;
 public class SnakeSegment {
 	private Location location;
 	private int size;
+	private boolean isHead;
 
-	public SnakeSegment(Location loc, int size) {
+	public SnakeSegment(Location loc, int size, boolean headQ) {
 		this.location = loc;
 		this.size = size;
+		this.isHead = headQ;
 	}
 
 	public void setLocation(Location loc) {
@@ -17,6 +19,10 @@ public class SnakeSegment {
 
 	public Location getLocation() {
 		return location;
+	}
+	
+	public boolean isHead() {
+		return isHead;
 	}
 
 	public void draw(Graphics g) {

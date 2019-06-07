@@ -19,7 +19,7 @@ public class Snake {
 
 	public Snake(Location location) {
 		snake = new ArrayList<SnakeSegment>();
-		head = new SnakeSegment(location, BODY_SIZE);
+		head = new SnakeSegment(location, BODY_SIZE, true);
 		snake.add(head);
 
 		currentDirection = Direction.RIGHT;
@@ -27,7 +27,7 @@ public class Snake {
 
 	public void feed() {
 		/** 1. add a new SnakeSegment object to the snake */
-		snake.add(new SnakeSegment(snake.get(0).getLocation(), BODY_SIZE));
+		snake.add(new SnakeSegment(snake.get(0).getLocation(), BODY_SIZE, false));
 	}
 
 	public Location getHeadLocation() {
@@ -42,18 +42,22 @@ public class Snake {
 		 */
 		switch (currentDirection) {
 		case RIGHT: {
+
 			newHeadLocation = new Location(head.getLocation().x + 1, head.getLocation().y);
 			break;
 		}
 		case LEFT: {
+
 			newHeadLocation = new Location(head.getLocation().x - 1, head.getLocation().y);
 			break;
 		}
 		case DOWN: {
+
 			newHeadLocation = new Location(head.getLocation().x, head.getLocation().y + 1);
 			break;
 		}
 		case UP: {
+
 			newHeadLocation = new Location(head.getLocation().x, head.getLocation().y - 1);
 			break;
 		}
@@ -73,9 +77,20 @@ public class Snake {
 	}
 
 	public void setDirection(Direction d) {
-		if (canMove && d != currentDirection) {
-			canMove = false;
-			currentDirection = d;
+		if (canMove) {
+			if (d == Direction.DOWN && currentDirection != Direction.UP) {
+				canMove = false;
+				currentDirection = d;
+			} else if (d == Direction.UP && currentDirection != Direction.DOWN) {
+				canMove = false;
+				currentDirection = d;
+			} else if (d == Direction.LEFT && currentDirection != Direction.RIGHT) {
+				canMove = false;
+				currentDirection = d;
+			} else if (d == Direction.RIGHT && currentDirection != Direction.LEFT) {
+				canMove = false;
+				currentDirection = d;
+			}
 		} else if (canMove) {
 			canMove = false;
 		} /**
@@ -101,8 +116,10 @@ public class Snake {
 		 * 1. complete the method so it returns true if the head of the snake is outside
 		 * of the window // and false otherwise
 		 */
-		if ((head.getLocation().x * _00_SnakeGame.WINDOW_SCALE >= _00_SnakeGame.WINDOW_WIDTH || head.getLocation().x * _00_SnakeGame.WINDOW_SCALE < 0)
-				|| (head.getLocation().y * _00_SnakeGame.WINDOW_SCALE >= _00_SnakeGame.WINDOW_HEIGHT || head.getLocation().y * _00_SnakeGame.WINDOW_SCALE < 0)) {
+		if ((head.getLocation().x * _00_SnakeGame.WINDOW_SCALE >= _00_SnakeGame.WINDOW_WIDTH
+				|| head.getLocation().x * _00_SnakeGame.WINDOW_SCALE < 0)
+				|| (head.getLocation().y * _00_SnakeGame.WINDOW_SCALE >= _00_SnakeGame.WINDOW_HEIGHT
+						|| head.getLocation().y * _00_SnakeGame.WINDOW_SCALE < 0)) {
 			return true;
 		} else {
 			return false;
@@ -116,14 +133,20 @@ public class Snake {
 		 */
 		System.out.println("test");
 		for (SnakeSegment snek : snake) {
-			System.out.println("inside snek");
-			if (head.getLocation() == snek.getLocation() && head != snek) {
-				System.out.println("HIT");
-				return true;
+			//System.out.println("inside snek");
+			//System.out.println(snek.getLocation() + ", head: " + head.getLocation());
+			if (!snek.isHead()) {
+				//System.out.println("hit1");
+
+				if (head.getLocation().x == snek.getLocation().x && head.getLocation().y == snek.getLocation().y) {
+					System.out.println("HIT");
+					return true;
+				}
 			}
 			if (head == snek) {
 				System.out.println("EQUAL");
 			}
+
 		}
 		return false;
 
