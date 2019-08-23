@@ -83,7 +83,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 
 	public void startGame() {
 		/** 1. Save the instructions for the game in the following string variable. */
-		String instructions = "Go eat the food! WASD or Arrow Keys to move, Space to eat!";
+		String instructions = "Go eat the food! WASD or Arrow Keys to move, Space to eat! \nChoose your difficulty below!";
 
 		String[] options = new String[] { "Expert", "Moderate", "Beginner" };
 		int input = JOptionPane.showOptionDialog(null, instructions, "Snake", 0, -1, null, options, 0);
@@ -107,6 +107,9 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		case "Beginner": {
 			timer.setDelay(1000);
 			break;
+		}
+		default: {
+			System.exit(0);
 		}
 		}
 
@@ -223,8 +226,10 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		}
 		/*
 		 * 4. if they want to play again // reset the snake and the food and start the
-		 * timer *//** else, exit the game
-		 */
+		 * timer
+		 *//**
+			 * else, exit the game
+			 */
 
 	}
 
